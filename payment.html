@@ -77,7 +77,7 @@
         <div class="col-lg-10">
           <!-- 原本shadow-lg的預設是shadow樣式，但是在 utilities 修改為中斷點的形式，現在是在桌面版會套用陰影而行動版不會呈現 -->
           <section class="container mb-4">
-          <form action="" class="p-lg-4 shadow-lg">           
+          <form action="" class="p-lg-4 shadow-lg needs-validation" novalidate>           
             <h3 class="deco-line text-dark">
               選擇課程
             </h3>
@@ -129,8 +129,11 @@
                         type="text"
                         id="userName"
                         class="form-control"
-                        value=""
+                        value="" required
                       />
+                      <div class="valid-feedback">
+                        輸入正確!
+                      </div>
                     </div>
                     <div class="col">
                       <label for="lastName" class="col-sm-2 col-form-label"
@@ -141,8 +144,11 @@
                         type="text"
                         id="lastName"
                         class="form-control"
-                        value=""
+                        value="" required
                       />
+                      <div class="valid-feedback">
+                        輸入正確!
+                      </div>
                     </div>
                   </div>
 
@@ -152,7 +158,10 @@
                         >手機號碼
                         </label
                       ><br />
-                      <input type="tel" id="userPhone" class="form-control" />
+                      <input type="tel" id="userPhone" class="form-control" maxlength="11" pattern="09\d{2}-\d{6}" placeholder="09xx-xxxxxx" required/>
+                        <div class="invalid-feedback">
+                          請輸入正確手機號碼格式（"09xx-xxxxxx"）
+                        </div>
                     </div>
                   </div>
 
@@ -162,7 +171,10 @@
                         >電子郵件
                         </label
                       ><br />
-                      <input type="email" id="userEmail" class="form-control" />
+                      <input type="email" id="userEmail" class="form-control" placeholder="example@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
+                        <div class="invalid-feedback">
+                          請輸入正確 email 格式（example@email.com）
+                        </div>
                     </div>
                   </div>
 
@@ -172,7 +184,10 @@
                         >住址
                         </label
                       ><br />
-                      <input type="text" id="userAddr" class="form-control" />
+                      <input type="text" id="userAddr" class="form-control" required/>
+                       <div class="invalid-feedback">
+                          請輸入有效地址.
+                       </div>
                     </div>
                   </div>
 
@@ -182,11 +197,15 @@
                         >方便聯絡時間
                       </label>
                       <div>
-                        <select name="" id="freeTime" class="form-select">
+                        <select id="freeTime" class="form-select" required>
+                          <option selected disabled value="">請選擇...</option>
                           <option value="">09:00-11:00</option>
-                          <option value="" selected>13:00-17:00</option>
+                          <option value="" >13:00-17:00</option>
                           <option value="">18:00-20:00</option>
                         </select>
+                        <div class="invalid-feedback">
+                          請選擇時段.
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -196,12 +215,14 @@
                         >備注説明
                       </label>
                       <br />
-                      <textarea class="form-control" id="remark" rows="3">
-                      </textarea>
+                      <textarea class="form-control" id="remark" rows="3" required></textarea>
+                      <div class="invalid-feedback">
+                        請填寫資料
+                      </div>
                     </div>
                   </div>
                   <button
-                    type="button"
+                    type="submit"
                     class="btn btn-primary w-100 my-4 text-white"
                   >
                     發送
@@ -268,5 +289,6 @@
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"
   ></script>
+  <script src="./javascript/payment.js"></script>
   </body>
 </html>
